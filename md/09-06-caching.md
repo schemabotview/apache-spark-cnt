@@ -1,0 +1,10 @@
+## Caching DataFrames — `cache()` and `persist()`
+
+Start from Spark's default, because it's the first trap: **every action re-runs the entire lineage from the source.** Call `df.count()` and then `df.collect()` on the same DataFrame and the read-and-transform pipeline runs *twice* — Spark remembers the recipe, not the result.
+
+Caching fixes it by materializing once and reusing:
+
+- **`df.cache()`** — shorthand for `persist(MEMORY_AND_DISK)`. **Lazy** — `cache()` alone does nothing; the *next action* materializes the result, and later actions read the cached copy.
+- **`df.persist(level)`** — choose the storage policy explicitly (`MEMORY_ONLY`, `MEMORY_AND_DISK`, the `_SER` and `_2` variants — from module 03).
+
+Two consequences of laziness: a `cache()` you forgot to use costs nothing, and a `cache()` with no following action is never populated. And note the default differs by API: **DataFrame `cache()` = `MEMORY_AND_DISK`** (spills safely), while **RDD `cache()` = `MEMORY_ONLY`** (recomputes on miss). Always **`unpersist()`** when done.

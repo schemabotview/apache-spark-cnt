@@ -1,0 +1,10 @@
+## Write modes
+
+Every `df.write` call takes a `mode` that controls what happens when the destination **path** already exists. Key point: these operate at the **directory level** — Spark only checks whether the path exists; it does *not* open the existing files or look inside them.
+
+- **`overwrite`** — delete every existing file at the path, then write the new ones. Total replacement; the old files are never read.
+- **`append`** — write new part-files alongside the existing ones. Spark never reads the old files, so it **can't dedupe** — append the same DataFrame twice and both copies land on disk.
+- **`ignore`** — do nothing, silently. No write, no error.
+- **`error`** (default) — raise `AnalysisException: path already exists`.
+
+For true row-level "update only what changed" semantics you need a transactional layer like **Delta Lake** or Iceberg — plain CSV/JSON/Parquet/ORC have no concept of row-level updates.

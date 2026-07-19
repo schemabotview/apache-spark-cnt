@@ -1,0 +1,7 @@
+## Conditional columns — `when` / `otherwise`
+
+This is the DataFrame `CASE WHEN`: chain `.when(cond, value)` for each branch and finish with `.otherwise(default)`. **Always** provide `.otherwise()` — without it, unmatched rows silently become `null`.
+
+The key gotcha: **every branch is evaluated for every row.** Unlike Python's `if / elif`, Spark computes *every* result expression in the chain, then picks the one whose condition matched. So a guard like `when(col("divisor") != 0, col("value") / col("divisor")).otherwise(lit(0))` does **not** save you from divide-by-zero — the division runs for every row, including the zero ones.
+
+Two safe fixes: coalesce the input so null propagates harmlessly (`value / when(divisor == 0, None).otherwise(divisor)`), or pull the unsafe expression out of the chain into its own null-safe `withColumn`.

@@ -1,0 +1,8 @@
+## `coalesce` vs `repartition` before writing
+
+Both set the number of output files, and the choice affects write speed, file sizes, and downstream read parallelism:
+
+- **`coalesce(n)`** — **no shuffle** (a narrow transformation), fast, but output sizes can be uneven. Use it to *reduce* the partition count when you don't need rebalancing.
+- **`repartition(n)`** — a **full shuffle**, slower, but output sizes are roughly equal. Use it to *increase* partitions or to rebalance skewed data.
+
+The classic case is `df.coalesce(1).write...` to produce a single output file — cheap, but if the upstream stage had wildly uneven partitions, that one output partition now holds all of the data. When in doubt: `coalesce` to shrink, `repartition` to grow or rebalance.

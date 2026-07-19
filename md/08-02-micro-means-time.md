@@ -1,0 +1,11 @@
+## "Micro" means time, not data size
+
+"Micro-batch" misleads people into thinking the data is tiny. It isn't. **"Micro" refers to the trigger *interval*, not the row count.** A micro-batch is just *whatever data arrived since the last checkpoint*:
+
+- `processingTime="1 second"` on a low-volume topic → tiny batches.
+- `processingTime="1 hour"` on a high-velocity Kafka topic → gigabytes per batch, hundreds of partitions — identical to a batch job in execution.
+- `trigger=availableNow` → reads everything available, processes in optimally-sized batches, then stops — **batch through the streaming API.**
+
+**When it earns its keep:** large per-batch volume, state that doesn't fit one node, cross-partition shuffles (windows, group-bys, stream-stream joins), unified batch + stream code, or joining a stream against a large static table.
+
+**When it's the wrong tool:** sub-10 ms latency SLAs (use Flink / Kafka Streams — Spark's micro-batch floor is ~100 ms), or low-volume stateless transforms (a plain Kafka consumer is simpler). The honest model: **throughput and fault tolerance in exchange for latency.**
