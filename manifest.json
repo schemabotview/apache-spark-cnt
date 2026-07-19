@@ -1,0 +1,1540 @@
+{
+  "concept": "Apache Spark",
+  "modules": [
+    {
+      "id": "01-foundations-and-the-cluster",
+      "title": "Foundations & the Cluster",
+      "sections": [
+        {
+          "heading": "The problem Spark solves",
+          "md": "md/01-01-the-problem-spark-solves.md",
+          "slide": "slides/01-01-the-problem-spark-solves.slide",
+          "audio": "audio/01-01-the-problem-spark-solves.wav",
+          "scene": "spark-architecture",
+          "spine": true,
+          "role": "hook"
+        },
+        {
+          "heading": "What Spark actually is",
+          "md": "md/01-02-what-spark-is.md",
+          "slide": "slides/01-02-what-spark-is.slide",
+          "audio": "audio/01-02-what-spark-is.wav",
+          "scene": "spark-architecture",
+          "focus": [
+            "master",
+            "worker-a",
+            "worker-b"
+          ],
+          "highlight": [
+            "driver",
+            "exec-a",
+            "exec-b"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "The cluster \u2014 driver, executors, cluster manager",
+          "md": "md/01-03-the-cluster.md",
+          "slide": "slides/01-03-the-cluster.slide",
+          "audio": "audio/01-03-the-cluster.wav",
+          "scene": "spark-architecture",
+          "focus": [
+            "master",
+            "cluster-mgr",
+            "worker-a",
+            "worker-b"
+          ],
+          "highlight": [
+            "driver",
+            "cluster-mgr",
+            "exec-a",
+            "exec-b"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Memory-first execution",
+          "md": "md/01-04-memory-first-execution.md",
+          "slide": "slides/01-04-memory-first-execution.slide",
+          "audio": "audio/01-04-memory-first-execution.wav",
+          "scene": "spark-architecture",
+          "focus": [
+            "worker-a"
+          ],
+          "highlight": [
+            "heap-a",
+            "unified-a",
+            "execution-a",
+            "storage-a"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Deployment modes & cluster managers",
+          "md": "md/01-05-deployment-modes.md",
+          "slide": "slides/01-05-deployment-modes.slide",
+          "audio": "audio/01-05-deployment-modes.wav",
+          "scene": "spark-architecture",
+          "focus": [
+            "cluster-mgr"
+          ],
+          "highlight": [
+            "cluster-mgr",
+            "mode-local",
+            "mode-standalone",
+            "mode-yarn",
+            "mode-k8s",
+            "mode-databricks"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "From your code to distributed work",
+          "md": "md/01-06-code-to-distributed-work.md",
+          "slide": "slides/01-06-code-to-distributed-work.slide",
+          "audio": "audio/01-06-code-to-distributed-work.wav",
+          "scene": "spark-architecture",
+          "focus": [
+            "dag-scheduler"
+          ],
+          "highlight": [
+            "job",
+            "stage-1",
+            "shuffle",
+            "stage-2",
+            "tasks"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "When NOT to use Spark",
+          "md": "md/01-07-when-not-to-use-spark.md",
+          "slide": "slides/01-07-when-not-to-use-spark.slide",
+          "audio": "audio/01-07-when-not-to-use-spark.wav",
+          "scene": "spark-architecture",
+          "focus": [
+            "cluster-mgr"
+          ],
+          "highlight": [
+            "mode-local"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Your first SparkSession",
+          "md": "md/01-08-first-sparksession.md",
+          "slide": "slides/01-08-first-sparksession.slide",
+          "audio": "audio/01-08-first-sparksession.wav",
+          "scene": "spark-architecture",
+          "focus": [
+            "master"
+          ],
+          "highlight": [
+            "session"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Hello Spark \u2014 a multi-step query",
+          "md": "md/01-09-hello-spark.md",
+          "slide": "slides/01-09-hello-spark.slide",
+          "audio": "audio/01-09-hello-spark.wav",
+          "scene": "spark-architecture",
+          "focus": [
+            "master"
+          ],
+          "highlight": [
+            "session",
+            "logical-plan",
+            "job"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "RDD vs DataFrame vs Dataset \u2014 the API stack",
+          "md": "md/01-10-api-stack.md",
+          "slide": "slides/01-10-api-stack.slide",
+          "audio": "audio/01-10-api-stack.wav",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-rdd",
+            "b-df"
+          ],
+          "highlight": [
+            "b-rdd",
+            "b-df"
+          ],
+          "spine": true
+        }
+      ]
+    },
+    {
+      "id": "02-the-execution-model",
+      "title": "The Execution Model",
+      "sections": [
+        {
+          "heading": "Lazy evaluation \u2014 transformations vs actions",
+          "md": "md/02-01-lazy-evaluation.md",
+          "slide": "slides/02-01-lazy-evaluation.slide",
+          "audio": "audio/02-01-lazy-evaluation.wav",
+          "scene": "spark-architecture",
+          "spine": true,
+          "role": "hook"
+        },
+        {
+          "heading": "Lazy evaluation, in depth",
+          "md": "md/02-02-lazy-evaluation-in-depth.md",
+          "slide": "slides/02-02-lazy-evaluation-in-depth.slide",
+          "audio": "audio/02-02-lazy-evaluation-in-depth.wav",
+          "scene": "spark-architecture",
+          "focus": [
+            "catalyst"
+          ],
+          "highlight": [
+            "session",
+            "logical-plan",
+            "optimized-plan"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "The four Catalyst plans",
+          "md": "md/02-03-catalyst-plans.md",
+          "slide": "slides/02-03-catalyst-plans.slide",
+          "audio": "audio/02-03-catalyst-plans.wav",
+          "scene": "spark-architecture",
+          "focus": [
+            "catalyst"
+          ],
+          "highlight": [
+            "logical-plan",
+            "analyzed-plan",
+            "optimized-plan",
+            "physical-plan"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Reading plans with .explain()",
+          "md": "md/02-04-explain-modes.md",
+          "slide": "slides/02-04-explain-modes.slide",
+          "audio": "audio/02-04-explain-modes.wav",
+          "scene": "spark-architecture",
+          "focus": [
+            "catalyst"
+          ],
+          "highlight": [
+            "physical-plan"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Tungsten \u2014 whole-stage codegen",
+          "md": "md/02-05-tungsten.md",
+          "slide": "slides/02-05-tungsten.slide",
+          "audio": "audio/02-05-tungsten.wav",
+          "scene": "spark-architecture",
+          "focus": [
+            "master"
+          ],
+          "highlight": [
+            "tungsten",
+            "physical-plan"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Adaptive Query Execution (AQE)",
+          "md": "md/02-06-adaptive-query-execution.md",
+          "slide": "slides/02-06-adaptive-query-execution.slide",
+          "audio": "audio/02-06-adaptive-query-execution.wav",
+          "scene": "spark-architecture",
+          "focus": [
+            "catalyst",
+            "dag-scheduler"
+          ],
+          "highlight": [
+            "optimized-plan",
+            "dag-scheduler"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "The DAG \u2014 stages & shuffle boundaries",
+          "md": "md/02-07-the-dag.md",
+          "slide": "slides/02-07-the-dag.slide",
+          "audio": "audio/02-07-the-dag.wav",
+          "scene": "spark-architecture",
+          "focus": [
+            "dag-scheduler"
+          ],
+          "highlight": [
+            "job",
+            "stage-1",
+            "shuffle",
+            "stage-2",
+            "tasks"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Spark Connect \u2014 the split-driver architecture",
+          "md": "md/02-08-spark-connect.md",
+          "slide": "slides/02-08-spark-connect.slide",
+          "audio": "audio/02-08-spark-connect.wav",
+          "scene": "spark-architecture",
+          "focus": [
+            "master",
+            "cluster-mgr"
+          ],
+          "highlight": [
+            "driver",
+            "session"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Why Spark Connect exists",
+          "md": "md/02-09-why-spark-connect.md",
+          "slide": "slides/02-09-why-spark-connect.slide",
+          "audio": "audio/02-09-why-spark-connect.wav",
+          "scene": "spark-architecture",
+          "focus": [
+            "master"
+          ],
+          "highlight": [
+            "session"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "What works (and what doesn't) in Connect mode",
+          "md": "md/02-10-connect-compatibility.md",
+          "slide": "slides/02-10-connect-compatibility.slide",
+          "audio": "audio/02-10-connect-compatibility.wav",
+          "scene": "spark-architecture",
+          "focus": [
+            "master"
+          ],
+          "highlight": [
+            "session",
+            "logical-plan",
+            "job"
+          ],
+          "spine": true
+        }
+      ]
+    },
+    {
+      "id": "03-rdds",
+      "title": "RDDs",
+      "sections": [
+        {
+          "heading": "What an RDD actually is",
+          "md": "md/03-01-what-an-rdd-is.md",
+          "slide": "slides/03-01-what-an-rdd-is.slide",
+          "audio": "audio/03-01-what-an-rdd-is.wav",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-rdd"
+          ],
+          "spine": true,
+          "role": "hook"
+        },
+        {
+          "heading": "Partitions \u2014 the unit of parallelism",
+          "md": "md/03-02-partitions.md",
+          "slide": "slides/03-02-partitions.slide",
+          "audio": "audio/03-02-partitions.wav",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-rdd-create"
+          ],
+          "highlight": [
+            "b-rdd-parallelize",
+            "b-rdd-numslices"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Lineage \u2014 how Spark recovers from failure",
+          "md": "md/03-03-lineage.md",
+          "slide": "slides/03-03-lineage.slide",
+          "audio": "audio/03-03-lineage.wav",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-rdd-narrow",
+            "b-rdd-wide"
+          ],
+          "highlight": [
+            "b-rdd-narrow",
+            "b-rdd-wide"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Creating RDDs & SparkContext",
+          "md": "md/03-04-creating-rdds.md",
+          "slide": "slides/03-04-creating-rdds.slide",
+          "audio": "audio/03-04-creating-rdds.wav",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-rdd-create"
+          ],
+          "highlight": [
+            "b-rdd-parallelize",
+            "b-rdd-numslices",
+            "b-rdd-textfile",
+            "b-rdd-whole"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Transformations and actions \u2014 RDD edition",
+          "md": "md/03-05-transformations-and-actions.md",
+          "slide": "slides/03-05-transformations-and-actions.slide",
+          "audio": "audio/03-05-transformations-and-actions.wav",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-rdd"
+          ],
+          "highlight": [
+            "b-rdd-narrow",
+            "b-rdd-wide",
+            "b-rdd-actions"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Narrow vs wide transformations",
+          "md": "md/03-06-narrow-vs-wide.md",
+          "slide": "slides/03-06-narrow-vs-wide.slide",
+          "audio": "audio/03-06-narrow-vs-wide.wav",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-rdd-narrow",
+            "b-rdd-wide"
+          ],
+          "highlight": [
+            "b-rdd-narrow",
+            "b-rdd-wide"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Pair RDDs \u2014 the (key, value) view",
+          "md": "md/03-07-pair-rdds.md",
+          "slide": "slides/03-07-pair-rdds.slide",
+          "audio": "audio/03-07-pair-rdds.wav",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-rdd-pair"
+          ],
+          "highlight": [
+            "b-rdd-pair",
+            "b-rdd-maptopair"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "reduceByKey vs groupByKey \u2014 the exam classic",
+          "md": "md/03-08-reduce-vs-group.md",
+          "slide": "slides/03-08-reduce-vs-group.slide",
+          "audio": "audio/03-08-reduce-vs-group.wav",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-rdd-pair"
+          ],
+          "highlight": [
+            "b-rdd-rbk",
+            "b-rdd-gbk"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Persistence \u2014 cache(), persist(), StorageLevel",
+          "md": "md/03-09-persistence.md",
+          "slide": "slides/03-09-persistence.slide",
+          "audio": "audio/03-09-persistence.wav",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-perf-cache"
+          ],
+          "highlight": [
+            "b-perf-cache-c",
+            "b-perf-cache-p",
+            "b-perf-cache-u"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "RDD vs DataFrame \u2014 when to actually reach for each",
+          "md": "md/03-10-rdd-vs-dataframe.md",
+          "slide": "slides/03-10-rdd-vs-dataframe.slide",
+          "audio": "audio/03-10-rdd-vs-dataframe.wav",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-rdd",
+            "b-df"
+          ],
+          "highlight": [
+            "b-rdd",
+            "b-df"
+          ],
+          "spine": true
+        }
+      ]
+    },
+    {
+      "id": "04-dataframes",
+      "title": "DataFrames",
+      "sections": [
+        {
+          "heading": "What a DataFrame really is",
+          "md": "md/04-01-what-a-dataframe-is.md",
+          "slide": "slides/04-01-what-a-dataframe-is.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-df"
+          ],
+          "spine": true,
+          "role": "hook"
+        },
+        {
+          "heading": "The Spark API hierarchy",
+          "md": "md/04-02-api-hierarchy.md",
+          "slide": "slides/04-02-api-hierarchy.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-rdd",
+            "b-df"
+          ],
+          "highlight": [
+            "b-rdd",
+            "b-df",
+            "b-sql"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Schemas \u2014 StructType vs DDL string",
+          "md": "md/04-03-schemas.md",
+          "slide": "slides/04-03-schemas.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-df-create"
+          ],
+          "highlight": [
+            "b-df-structtype",
+            "b-df-ddl"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Creating DataFrames",
+          "md": "md/04-04-creating-dataframes.md",
+          "slide": "slides/04-04-creating-dataframes.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-df-create"
+          ],
+          "highlight": [
+            "b-df-createdf",
+            "b-df-sql-create",
+            "b-df-read"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Exploring a DataFrame",
+          "md": "md/04-05-exploring.md",
+          "slide": "slides/04-05-exploring.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-df-actions"
+          ],
+          "highlight": [
+            "b-df-act-show",
+            "b-df-act-print",
+            "b-df-act-count",
+            "b-df-act-desc"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Column references \u2014 the four ways",
+          "md": "md/04-06-column-references.md",
+          "slide": "slides/04-06-column-references.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-df-col"
+          ],
+          "highlight": [
+            "b-df-colstr",
+            "b-df-colfn",
+            "b-df-expr",
+            "b-df-dfcol",
+            "b-df-dfidx"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Common DataFrame operations",
+          "md": "md/04-07-common-operations.md",
+          "slide": "slides/04-07-common-operations.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-df-trans"
+          ],
+          "highlight": [
+            "b-df-t-select",
+            "b-df-t-withcol",
+            "b-df-t-filter",
+            "b-df-t-drop"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Three DataFrame types \u2014 keep them straight",
+          "md": "md/04-08-three-dataframe-types.md",
+          "slide": "slides/04-08-three-dataframe-types.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-df",
+            "b-ps"
+          ],
+          "highlight": [
+            "b-df",
+            "b-ps"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Converting between the three types",
+          "md": "md/04-09-converting-types.md",
+          "slide": "slides/04-09-converting-types.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-ps"
+          ],
+          "highlight": [
+            "b-ps-papi",
+            "b-ps-fp",
+            "b-ps-tpd"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Default indexes \u2014 the most-tested gotcha",
+          "md": "md/04-10-default-indexes.md",
+          "slide": "slides/04-10-default-indexes.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-ps-index"
+          ],
+          "highlight": [
+            "b-ps-idx-seq",
+            "b-ps-idx-dist",
+            "b-ps-idx-ds"
+          ],
+          "spine": true
+        }
+      ]
+    },
+    {
+      "id": "05-reading-and-writing",
+      "title": "Reading & Writing",
+      "sections": [
+        {
+          "heading": "The unified read/write API",
+          "md": "md/05-01-unified-read-write-api.md",
+          "slide": "slides/05-01-unified-read-write-api.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-read",
+            "b-write"
+          ],
+          "spine": true,
+          "role": "hook"
+        },
+        {
+          "heading": "Reading the four formats",
+          "md": "md/05-02-reading-four-formats.md",
+          "slide": "slides/05-02-reading-four-formats.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-sources"
+          ],
+          "highlight": [
+            "b-src-csv",
+            "b-src-json",
+            "b-src-parquet",
+            "b-src-orc"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Schema inference vs explicit",
+          "md": "md/05-03-schema-inference.md",
+          "slide": "slides/05-03-schema-inference.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-read-fmt"
+          ],
+          "highlight": [
+            "b-r-header",
+            "b-r-merge",
+            "b-r-multiline"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Predicate & projection pushdown",
+          "md": "md/05-04-pushdown.md",
+          "slide": "slides/05-04-pushdown.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-sources"
+          ],
+          "highlight": [
+            "b-src-parquet",
+            "b-src-orc",
+            "b-src-delta"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Bad-record handling \u2014 the mode option",
+          "md": "md/05-05-bad-records.md",
+          "slide": "slides/05-05-bad-records.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-read-mode"
+          ],
+          "highlight": [
+            "b-r-permissive",
+            "b-r-failfast",
+            "b-r-drop",
+            "b-r-badpath"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Write modes",
+          "md": "md/05-06-write-modes.md",
+          "slide": "slides/05-06-write-modes.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-w-mode"
+          ],
+          "highlight": [
+            "b-w-m-over",
+            "b-w-m-append",
+            "b-w-m-error",
+            "b-w-m-ignore"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "partitionBy \u2014 the partition-pruning win",
+          "md": "md/05-07-partitionby.md",
+          "slide": "slides/05-07-partitionby.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-w-layout"
+          ],
+          "highlight": [
+            "b-w-partby"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "bucketBy \u2014 bucketing for join-friendly layouts",
+          "md": "md/05-08-bucketby.md",
+          "slide": "slides/05-08-bucketby.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-w-layout"
+          ],
+          "highlight": [
+            "b-w-bucket",
+            "b-w-sortby"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "saveAsTable vs save \u2014 catalog vs filesystem",
+          "md": "md/05-09-savetable-vs-save.md",
+          "slide": "slides/05-09-savetable-vs-save.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-w-sinks"
+          ],
+          "highlight": [
+            "b-w-save",
+            "b-w-saveTbl",
+            "b-w-insert"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "coalesce vs repartition before writing",
+          "md": "md/05-10-coalesce-vs-repartition.md",
+          "slide": "slides/05-10-coalesce-vs-repartition.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-perf-part"
+          ],
+          "highlight": [
+            "b-perf-rp",
+            "b-perf-co"
+          ],
+          "spine": true
+        }
+      ]
+    },
+    {
+      "id": "06-transformations-and-aggregations",
+      "title": "Transformations & Aggregations",
+      "sections": [
+        {
+          "heading": "The function library \u2014 pyspark.sql.functions",
+          "md": "md/06-01-function-library.md",
+          "slide": "slides/06-01-function-library.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-df-fns"
+          ],
+          "spine": true,
+          "role": "hook"
+        },
+        {
+          "heading": "Column expressions \u2014 string, date, array functions",
+          "md": "md/06-02-column-expressions.md",
+          "slide": "slides/06-02-column-expressions.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-df-fns"
+          ],
+          "highlight": [
+            "b-df-fn-str",
+            "b-df-fn-date",
+            "b-df-fn-array"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Conditional columns \u2014 when / otherwise",
+          "md": "md/06-03-conditional-columns.md",
+          "slide": "slides/06-03-conditional-columns.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-df-col"
+          ],
+          "highlight": [
+            "b-df-when"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Combining DataFrames \u2014 union vs unionByName",
+          "md": "md/06-04-combining-dataframes.md",
+          "slide": "slides/06-04-combining-dataframes.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-df-joins"
+          ],
+          "highlight": [
+            "b-df-set-union",
+            "b-df-set-inter"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Joins \u2014 types, syntax, and the duplicate-column trap",
+          "md": "md/06-05-joins.md",
+          "slide": "slides/06-05-joins.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-df-joins"
+          ],
+          "highlight": [
+            "b-df-j-inner",
+            "b-df-j-left",
+            "b-df-j-right",
+            "b-df-j-outer",
+            "b-df-j-semi"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "groupBy + agg",
+          "md": "md/06-06-groupby-agg.md",
+          "slide": "slides/06-06-groupby-agg.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-df-agg"
+          ],
+          "highlight": [
+            "b-df-a-groupby",
+            "b-df-a-agg",
+            "b-df-a-cntdist"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Filtering groups, pivot & unpivot",
+          "md": "md/06-07-filtering-pivot-unpivot.md",
+          "slide": "slides/06-07-filtering-pivot-unpivot.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-df-agg"
+          ],
+          "highlight": [
+            "b-df-a-pivot",
+            "b-df-a-stack",
+            "b-df-a-rollup"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Window functions \u2014 concept and spec",
+          "md": "md/06-08-window-functions.md",
+          "slide": "slides/06-08-window-functions.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-df-agg"
+          ],
+          "highlight": [
+            "b-df-w-over"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Ranking \u2014 row_number, rank, dense_rank, ntile",
+          "md": "md/06-09-ranking.md",
+          "slide": "slides/06-09-ranking.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-df-agg"
+          ],
+          "highlight": [
+            "b-df-w-rank",
+            "b-df-w-over"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "lag / lead & running aggregates",
+          "md": "md/06-10-lag-lead-running.md",
+          "slide": "slides/06-10-lag-lead-running.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-df-agg"
+          ],
+          "highlight": [
+            "b-df-w-over",
+            "b-df-w-rank"
+          ],
+          "spine": true
+        }
+      ]
+    },
+    {
+      "id": "07-spark-sql-and-udfs",
+      "title": "Spark SQL & UDFs",
+      "sections": [
+        {
+          "heading": "SQL is a first-class citizen",
+          "md": "md/07-01-sql-first-class.md",
+          "slide": "slides/07-01-sql-first-class.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-sql"
+          ],
+          "spine": true,
+          "role": "hook"
+        },
+        {
+          "heading": "Temporary views \u2014 session, global, and managed tables",
+          "md": "md/07-02-temporary-views.md",
+          "slide": "slides/07-02-temporary-views.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-sql-views"
+          ],
+          "highlight": [
+            "b-sql-temp",
+            "b-sql-gtemp",
+            "b-sql-savetbl"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Basic SQL & the catalog API",
+          "md": "md/07-03-basic-sql-catalog.md",
+          "slide": "slides/07-03-basic-sql-catalog.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-sql-queries",
+            "b-sql-views"
+          ],
+          "highlight": [
+            "b-sql-select",
+            "b-sql-where",
+            "b-sql-listtbl"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Null semantics \u2014 col == null always returns null",
+          "md": "md/07-04-null-semantics.md",
+          "slide": "slides/07-04-null-semantics.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-sql-null"
+          ],
+          "highlight": [
+            "b-sql-n-eq",
+            "b-sql-n-neq",
+            "b-sql-n-isn",
+            "b-sql-n-coa"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "CTEs, subqueries & SQL joins",
+          "md": "md/07-05-ctes-subqueries-joins.md",
+          "slide": "slides/07-05-ctes-subqueries-joins.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-sql-joins"
+          ],
+          "highlight": [
+            "b-sql-cte",
+            "b-sql-sub",
+            "b-sql-j-inner",
+            "b-sql-j-left"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Window functions in SQL",
+          "md": "md/07-06-window-functions-sql.md",
+          "slide": "slides/07-06-window-functions-sql.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-sql-agg"
+          ],
+          "highlight": [
+            "b-sql-rownum",
+            "b-sql-rank",
+            "b-sql-lag",
+            "b-sql-cume"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "DataFrame API vs SQL \u2014 same plan",
+          "md": "md/07-07-dataframe-vs-sql.md",
+          "slide": "slides/07-07-dataframe-vs-sql.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-sql",
+            "b-df"
+          ],
+          "highlight": [
+            "b-sql",
+            "b-df"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Python UDFs \u2014 @udf and spark.udf.register",
+          "md": "md/07-08-python-udfs.md",
+          "slide": "slides/07-08-python-udfs.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-df-fns"
+          ],
+          "highlight": [
+            "b-df-fn-udf"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Pandas UDFs \u2014 vectorized via Apache Arrow",
+          "md": "md/07-09-pandas-udfs.md",
+          "slide": "slides/07-09-pandas-udfs.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-df-fns"
+          ],
+          "highlight": [
+            "b-df-fn-udf"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Performance tiers \u2014 when to use each",
+          "md": "md/07-10-performance-tiers.md",
+          "slide": "slides/07-10-performance-tiers.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-df-fns"
+          ],
+          "highlight": [
+            "b-df-fn-str",
+            "b-df-fn-udf"
+          ],
+          "spine": true
+        }
+      ]
+    },
+    {
+      "id": "08-structured-streaming",
+      "title": "Structured Streaming",
+      "sections": [
+        {
+          "heading": "Batch vs Structured Streaming \u2014 the mental model",
+          "md": "md/08-01-batch-vs-streaming.md",
+          "slide": "slides/08-01-batch-vs-streaming.slide",
+          "scene": "spark-streaming",
+          "focus": [
+            "s-read",
+            "s-write"
+          ],
+          "spine": true,
+          "role": "hook"
+        },
+        {
+          "heading": "\"Micro\" means time, not data size",
+          "md": "md/08-02-micro-means-time.md",
+          "slide": "slides/08-02-micro-means-time.slide",
+          "scene": "spark-streaming",
+          "focus": [
+            "s-trigger"
+          ],
+          "highlight": [
+            "s-tr-ptime",
+            "s-tr-avail"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "API parity \u2014 what actually changes",
+          "md": "md/08-03-api-parity.md",
+          "slide": "slides/08-03-api-parity.slide",
+          "scene": "spark-streaming",
+          "focus": [
+            "s-df-stateless"
+          ],
+          "highlight": [
+            "s-df-t-select",
+            "s-df-t-filter",
+            "s-df-t-withcol"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Your first streaming query \u2014 rate source, memory sink",
+          "md": "md/08-04-first-streaming-query.md",
+          "slide": "slides/08-04-first-streaming-query.slide",
+          "scene": "spark-streaming",
+          "focus": [
+            "s-read",
+            "s-write"
+          ],
+          "highlight": [
+            "s-src-rate",
+            "s-sink-mem",
+            "s-out-mem"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Sources & sinks",
+          "md": "md/08-05-sources-and-sinks.md",
+          "slide": "slides/08-05-sources-and-sinks.slide",
+          "scene": "spark-streaming",
+          "focus": [
+            "s-sources",
+            "s-sinks"
+          ],
+          "highlight": [
+            "s-src-rate",
+            "s-src-file",
+            "s-src-kafka",
+            "s-sink-delta",
+            "s-sink-fb"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Output modes \u2014 append, update, complete",
+          "md": "md/08-06-output-modes.md",
+          "slide": "slides/08-06-output-modes.slide",
+          "scene": "spark-streaming",
+          "focus": [
+            "s-outmode"
+          ],
+          "highlight": [
+            "s-om-append",
+            "s-om-update",
+            "s-om-complete"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Triggers \u2014 controlling micro-batch cadence",
+          "md": "md/08-07-triggers.md",
+          "slide": "slides/08-07-triggers.slide",
+          "scene": "spark-streaming",
+          "focus": [
+            "s-trigger"
+          ],
+          "highlight": [
+            "s-tr-default",
+            "s-tr-ptime",
+            "s-tr-once",
+            "s-tr-avail",
+            "s-tr-cont"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Checkpointing and fault tolerance",
+          "md": "md/08-08-checkpointing.md",
+          "slide": "slides/08-08-checkpointing.slide",
+          "scene": "spark-streaming",
+          "focus": [
+            "s-checkpoint"
+          ],
+          "highlight": [
+            "s-ck-offsets",
+            "s-ck-commits",
+            "s-ck-state",
+            "s-ck-metadata"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Time, windows & watermarking",
+          "md": "md/08-09-time-windows-watermark.md",
+          "slide": "slides/08-09-time-windows-watermark.slide",
+          "scene": "spark-streaming",
+          "focus": [
+            "s-df-window",
+            "s-df-water"
+          ],
+          "highlight": [
+            "s-df-w-window",
+            "s-df-w-tumb",
+            "s-df-w-slide",
+            "s-df-wm-fn",
+            "s-df-wm-late"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Stateful operations \u2014 joins, dedup, arbitrary state",
+          "md": "md/08-10-stateful-ops.md",
+          "slide": "slides/08-10-stateful-ops.slide",
+          "scene": "spark-streaming",
+          "focus": [
+            "s-df-state",
+            "s-df-joins"
+          ],
+          "highlight": [
+            "s-df-st-gbk",
+            "s-df-st-dedup",
+            "s-df-j-ssi",
+            "s-df-j-static"
+          ],
+          "spine": true
+        }
+      ]
+    },
+    {
+      "id": "09-performance-tuning",
+      "title": "Performance Tuning",
+      "sections": [
+        {
+          "heading": "Partition sizing \u2014 the unit of parallelism",
+          "md": "md/09-01-partition-sizing.md",
+          "slide": "slides/09-01-partition-sizing.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-perf-part"
+          ],
+          "spine": true,
+          "role": "hook"
+        },
+        {
+          "heading": "repartition vs coalesce vs partitionBy \u2014 three different things",
+          "md": "md/09-02-repartition-coalesce.md",
+          "slide": "slides/09-02-repartition-coalesce.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-perf-part"
+          ],
+          "highlight": [
+            "b-perf-rp",
+            "b-perf-co",
+            "b-perf-pb"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "What triggers a shuffle",
+          "md": "md/09-03-what-triggers-shuffle.md",
+          "slide": "slides/09-03-what-triggers-shuffle.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-perf-shuffle"
+          ],
+          "highlight": [
+            "b-perf-sp",
+            "b-perf-smj"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Tuning spark.sql.shuffle.partitions",
+          "md": "md/09-04-tuning-shuffle-partitions.md",
+          "slide": "slides/09-04-tuning-shuffle-partitions.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-perf-shuffle"
+          ],
+          "highlight": [
+            "b-perf-sp"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "AQE in depth \u2014 runtime re-optimization",
+          "md": "md/09-05-aqe-in-depth.md",
+          "slide": "slides/09-05-aqe-in-depth.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-perf"
+          ],
+          "highlight": [
+            "b-perf-shuffle",
+            "b-perf-bcast"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Caching DataFrames \u2014 cache() and persist()",
+          "md": "md/09-06-caching.md",
+          "slide": "slides/09-06-caching.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-perf-cache"
+          ],
+          "highlight": [
+            "b-perf-cache-c",
+            "b-perf-cache-p",
+            "b-perf-cache-u"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Checkpointing \u2014 truncating long lineage",
+          "md": "md/09-07-checkpointing.md",
+          "slide": "slides/09-07-checkpointing.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-perf-cache"
+          ],
+          "highlight": [
+            "b-perf-cache-p",
+            "b-sl-mad"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Driver-side bottlenecks \u2014 collect, withColumn in a loop",
+          "md": "md/09-08-driver-bottlenecks.md",
+          "slide": "slides/09-08-driver-bottlenecks.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-df-actions"
+          ],
+          "highlight": [
+            "b-df-act-collect"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Join strategies, broadcast, and when NOT to broadcast",
+          "md": "md/09-09-join-strategies.md",
+          "slide": "slides/09-09-join-strategies.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-perf-bcast"
+          ],
+          "highlight": [
+            "b-perf-bc-fn",
+            "b-perf-bc-cfg",
+            "b-perf-smj"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Detecting and fixing data skew",
+          "md": "md/09-10-data-skew.md",
+          "slide": "slides/09-10-data-skew.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-perf-shuffle"
+          ],
+          "highlight": [
+            "b-perf-sp"
+          ],
+          "spine": true
+        }
+      ]
+    },
+    {
+      "id": "10-pandas-api-on-spark",
+      "title": "Pandas API on Spark",
+      "sections": [
+        {
+          "heading": "Why this API exists",
+          "md": "md/10-01-why-pandas-api.md",
+          "slide": "slides/10-01-why-pandas-api.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-ps"
+          ],
+          "spine": true,
+          "role": "hook"
+        },
+        {
+          "heading": "Setup & creating a ps.DataFrame",
+          "md": "md/10-02-creating-ps-dataframe.md",
+          "slide": "slides/10-02-creating-ps-dataframe.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-ps-create"
+          ],
+          "highlight": [
+            "b-ps-dfdict",
+            "b-ps-read",
+            "b-ps-papi",
+            "b-ps-fp"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Three DataFrame types \u2014 keep them straight",
+          "md": "md/10-03-three-dataframe-types.md",
+          "slide": "slides/10-03-three-dataframe-types.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-ps",
+            "b-df"
+          ],
+          "highlight": [
+            "b-ps",
+            "b-df"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Transformations \u2014 lazy, return another ps.DataFrame",
+          "md": "md/10-04-transformations.md",
+          "slide": "slides/10-04-transformations.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-ps-trans"
+          ],
+          "highlight": [
+            "b-ps-t-col",
+            "b-ps-t-filter",
+            "b-ps-t-group",
+            "b-ps-t-join"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Actions \u2014 eager, trigger a Spark job",
+          "md": "md/10-05-actions.md",
+          "slide": "slides/10-05-actions.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-ps-actions"
+          ],
+          "highlight": [
+            "b-ps-tc",
+            "b-ps-tp",
+            "b-ps-tj",
+            "b-ps-tpd"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "The Spark bridge \u2014 to_spark() and pandas_api()",
+          "md": "md/10-06-spark-bridge.md",
+          "slide": "slides/10-06-spark-bridge.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-ps"
+          ],
+          "highlight": [
+            "b-ps-papi",
+            "b-ps-fp",
+            "b-ps-tpd"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Default index types \u2014 the most-tested gotcha",
+          "md": "md/10-07-default-index-types.md",
+          "slide": "slides/10-07-default-index-types.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-ps-index"
+          ],
+          "highlight": [
+            "b-ps-idx-seq",
+            "b-ps-idx-dist",
+            "b-ps-idx-ds"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Gotchas \u2014 where the pandas API ends",
+          "md": "md/10-08-gotchas.md",
+          "slide": "slides/10-08-gotchas.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-ps-index"
+          ],
+          "highlight": [
+            "b-ps-idx-cfg"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "When to use it vs the Spark DataFrame API",
+          "md": "md/10-09-when-to-use.md",
+          "slide": "slides/10-09-when-to-use.slide",
+          "scene": "spark-batch-api",
+          "focus": [
+            "b-ps",
+            "b-df"
+          ],
+          "highlight": [
+            "b-ps",
+            "b-df"
+          ],
+          "spine": true
+        }
+      ]
+    }
+  ]
+}
