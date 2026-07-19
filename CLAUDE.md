@@ -12,7 +12,9 @@ curriculum) — are **reference material**, not something to copy wholesale. We 
 structure, not port it.
 
 There is **nothing to build, run, or test** here. The one manual step (later) is the Colab
-tool that turns `tts/` scripts into `audio/` `.wav`s (owner-run).
+tool that turns `tts/` scripts into `audio/` `.wav`s (owner-run) — that shared notebook lives
+in the sibling `control-center` repo (`../control-center/scripts/`), not here, so it isn't
+duplicated per content repo. Point its config cell at this repo (`OWNER`/`REPO`) and run it.
 
 ## Working agreement
 
