@@ -1,5 +1,9 @@
 # apache-spark-cnt
 
+[![render-app · UI engine](https://img.shields.io/badge/render--app-UI%20engine-5b8cff?logo=github&logoColor=white)](https://github.com/schemabotview/render-app)
+[![control-center · scripts & capture](https://img.shields.io/badge/control--center-scripts%20%26%20capture-37d39a?logo=github&logoColor=white)](https://github.com/schemabotview/control-center)
+[![apache-spark-cnt · content](https://img.shields.io/badge/apache--spark--cnt-content-ff7a59?logo=github&logoColor=white)](https://github.com/schemabotview/apache-spark-cnt)
+
 Video-first content for the **Apache Spark** concept, consumed at runtime by the UI/render
 app (see [`../README.md`](../README.md) for the workspace map). **Content only** — per-section
 Markdown (`md/`, the source of truth), authored one-screen slides (`slides/`), narration
